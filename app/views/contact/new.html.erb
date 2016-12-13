@@ -1,0 +1,134 @@
+<!doctype html>
+<% content_for :title, "Contact" %>
+<html class="no-js" lang="en" dir="ltr">
+  <head>
+    <title>Contact</title>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/foundation.css">
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="/assets/contact.scss">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js">
+    </script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js">
+    </script>
+    <style>
+
+     @font-face {
+        font-family: Brandon Grotesque;
+        src: url("/assets/Brandon Grotesque/Brandon_reg.otf") format("truetype");
+    }
+    h1 { font-family: 'Brandon Grotesque', Times, serif; }
+
+    /* ----- SimpleForm Styles ----- */
+
+.simple_form div.input {
+  margin-bottom: 10px;
+  clear: both; /* Required for Webkit, but not for Gecko */
+}
+
+.simple_form label {
+  float: left;
+  width: 100px;
+  text-align: right;
+  margin: 2px 10px;
+}
+
+div.boolean, .simple_form input[type='submit'] {
+  margin-left: 120px;
+}
+
+div.boolean label, label.collection_radio_buttons {
+  float: none;
+  margin: 0;
+}
+
+label.collection_radio_buttons {
+  margin-right: 10px;
+  vertical-align: -2px;
+  margin-left: 2px;
+}
+
+.field_with_errors {
+  background-color: #ff3333;
+}
+
+.simple_form .error {
+  clear: left;
+  color: black;
+  display: block;
+  margin-left: 120px;
+}
+
+.simple_form .hint {
+  clear: left;
+  margin-left: 120px;
+  color: #555;
+  display: block;
+  font-style: italic;
+}
+
+input.radio {
+  margin-right: 5px;
+  vertical-align: -3px;
+}
+
+input.check_boxes {
+  margin-left: 3px;
+  vertical-align: -3px;
+}
+
+label.collection_check_boxes {
+  float: none;
+  margin: 0;
+  vertical-align: -2px;
+  margin-left: 2px;
+}
+
+    </style>
+  </head>
+
+<body>
+    <header class="intro-header" style="background-image: url('img/contact-bg.jpg')">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="page-heading">
+                        <h1>Contact Us
+                        </h1>
+                        <hr class="small">
+                        <span class="subheading">Have any questions, concerns, or just wanna send us some positive vibes? Feel free to shoot us a message!
+                        </span>
+                        <br></br>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <%= simple_form_for @contact, url: contact_path(@contact) do |f| %>
+                    <%= f.input :name, placeholder: 'Name' %>
+                    <%= f.input :email, placeholder: 'Email' %>
+                    <%= f.input :message, :as => :text, placeholder: 'Message' %>
+                    <div class= "hidden">
+                        <%= f.input :nickname, :hint => 'Leave this field blank!' %>
+                    </div>
+                    <div>
+                        </br>
+                        <%= f.button :submit, 'Submit', :class=> "btn btn-primary" %>
+                    </div>
+                    <% end %>
+            </div>
+        </div>
+    </div>
+    <hr>
+
+</body>
+
+</html> 

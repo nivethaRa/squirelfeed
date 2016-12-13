@@ -1,0 +1,84 @@
+<style>
+    /* ==========================================================================
+Navigation Style
+========================================================================== */
+.myNavbar   {
+    background-color: #000000;
+    color:#222;
+    border: 1px solid #fff;
+ }
+.navbar-default {
+  margin-bottom: 0;
+  border: none;
+}
+.navbar-default .nav > li > a {
+  font-size: 14px;
+  color: #fff;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 35px 15px;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+.navbar-default .nav > li > a:hover,
+.navbar-default .nav > li > a:focus,
+.navbar-default .nav > li > a:active {
+  color: #a3a3a3;
+}
+.navbar-default .social-media {
+  float: right;
+  padding: 0 15px;
+}
+.navbar-default .social-media i {
+  font-size: 22px;
+}
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:focus,
+.navbar-default .navbar-nav > .active > a:hover {
+  background: transparent;
+  color: #a3a3a3;
+}
+.top-nav-collapse {
+  background: #24242a;
+}
+.navbar-brand img {
+  width: 50px;
+  height: 50px;
+}
+.top-nav-collapse .nav > li > a {
+  padding: 30px 15px;
+}
+</style>
+
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#"><img src="/assets/logo/logo_brown_no_text.png" alt="logo"></a>
+    </div>
+    <div class="collapse navbar-collapse" id="navbar">
+        <ul class="nav navbar-nav">
+          <li><a href="/home">Home</a></li>
+        </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/basket"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
+        <div class="social-media hidden-sm hidden-xs">
+          <ul class="nav navbar-nav">
+            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+            <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+          </ul>
+        </div>
+        <li><%= link_to('Sign In', new_user_session_path) %></li>
+        <li><%= link_to('Sign Up', new_user_registration_path) %></li>
+      </ul>
+    </div>
+  </div>
+</nav>
