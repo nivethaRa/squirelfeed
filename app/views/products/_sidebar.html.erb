@@ -4,10 +4,9 @@
 	    <%= form_tag products_path, :method => 'get' do %>
 	      <p><%= check_box_tag :delivery, checked = true %> Delivery</p>
 	      <p><%= check_box_tag :pick_up %> Pick Up</p>
-	      <p>Within a 10mile radius</p>
-	      <p>Within a <input type="text" id="mile" name="amount" readonly style="border:0; color:#f6931f; font-weight:bold; width:26px;"> mile radius</p>
+	      <p>Within a <input type="text" id="mile" name="mile" readonly style="border:0; color:#f6931f; font-weight:bold; width:26px;">mile radius</p>
 	      <p><div id="slider-range-mile"></div></p>
-	      <p>Less than <input type="text" id="amount" name="amount" readonly style="border:0; color:#f6931f; font-weight:bold; width:26px;"> dollars</p>
+	      <p>Less than <input type="text" id="amount" name="amount" readonly style="border:0; color:#f6931f; font-weight:bold; width:26px;">dollars</p>
 		  <p><div id="slider-range-min"></div></p>
 	      <p><%= check_box_tag :entres, checked = true %> Entres</p>
 	      <p><%= check_box_tag :sides, checked = true %> Sides</p>
@@ -19,7 +18,8 @@
 	      <p><%= check_box_tag :dairyFree, checked = true %> Dairy Free</p>
 	      <p><%= check_box_tag :vegitarian, checked = true %> Vegitarian</p>
 	      <p><%= check_box_tag :vegan, checked = true %> Vegan</p>	
-	      <p><input class="slide" type="range" min="0" max="200" id="slider1"></p>
+	      <p>I need <input type="text" id="serving" name="serving" readonly style="border:0; color:#f6931f; font-weight:bold; width:26px;">servings</p>
+	      <p><div id="slider-range-serving"></div></p>
 	      <p><%= submit_tag "Search", :name => nil %></p>
 	    <% end %>
     </ul>
@@ -35,7 +35,7 @@
       max: 100,
       animate: true,
       slide: function( event, ui ) {
-        $( "#amount" ).val( "$" + ui.value );
+        $( "#amount" ).val( ui.value );
         $(this).find('.ui-slider-handle').text(ui.value);
       }
 
@@ -49,12 +49,27 @@
       max: 50,
       animate: true,
       slide: function( event, ui ) {
-        $( "#amount" ).val( "$" + ui.value );
+        $( "#mile" ).val( ui.value );
         $(this).find('.ui-slider-handle').text(ui.value);
       }
 
     });
     $( "#mile" ).val( $( "#slider-range-mile" ).slider( "value" ) );
+
+    $( "#slider-range-serving" ).slider({
+      range: "min",
+      value: 20,
+      min: 1,
+      max: 100,
+      animate: true,
+      slide: function( event, ui ) {
+        $( "#serving" ).val( ui.value );
+        $(this).find('.ui-slider-handle').text(ui.value);
+      }
+
+    });
+    $( "#serving" ).val( $( "#slider-range-serving" ).slider( "value" ) );
+
   } );
 
   </script>
