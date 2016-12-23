@@ -1,0 +1,72 @@
+<div class="sidebar" style="padding-top: 100px;">
+	<h4>Filters</h4>
+	<ul class="nav nav-list">
+	    <%= form_tag products_path, :method => 'get' do %>
+	      <p><%= check_box_tag :delivery, checked = true %> Delivery</p>
+	      <p><%= check_box_tag :pick_up %> Pick Up</p>
+	      <p>Within a 10mile radius</p>
+	      <p>Within a <input type="text" id="mile" name="amount" readonly style="border:0; color:#f6931f; font-weight:bold; width:26px;"> mile radius</p>
+	      <p><div id="slider-range-mile"></div></p>
+	      <p>Less than <input type="text" id="amount" name="amount" readonly style="border:0; color:#f6931f; font-weight:bold; width:26px;"> dollars</p>
+		  <p><div id="slider-range-min"></div></p>
+	      <p><%= check_box_tag :entres, checked = true %> Entres</p>
+	      <p><%= check_box_tag :sides, checked = true %> Sides</p>
+	      <p><%= check_box_tag :backed_goods, checked = true %> Backed goods</p>
+	      <p><%= check_box_tag :dessert, checked = true %> Dessert</p>
+	      <p>Food allergy & lifestyle accomodations</p>
+	      <p><%= check_box_tag :glutenFree, checked = true %> Gluten Free</p>
+	      <p><%= check_box_tag :nutFree, checked = true %> Nut Free</p>
+	      <p><%= check_box_tag :dairyFree, checked = true %> Dairy Free</p>
+	      <p><%= check_box_tag :vegitarian, checked = true %> Vegitarian</p>
+	      <p><%= check_box_tag :vegan, checked = true %> Vegan</p>	
+	      <p><input class="slide" type="range" min="0" max="200" id="slider1"></p>
+	      <p><%= submit_tag "Search", :name => nil %></p>
+	    <% end %>
+    </ul>
+</div>
+
+
+  <script>
+  $( function() {
+    $( "#slider-range-min" ).slider({
+      range: "min",
+      value: 25,
+      min: 1,
+      max: 100,
+      animate: true,
+      slide: function( event, ui ) {
+        $( "#amount" ).val( "$" + ui.value );
+        $(this).find('.ui-slider-handle').text(ui.value);
+      }
+
+    });
+    $( "#amount" ).val( $( "#slider-range-min" ).slider( "value" ) );
+
+    $( "#slider-range-mile" ).slider({
+      range: "min",
+      value: 10,
+      min: 1,
+      max: 50,
+      animate: true,
+      slide: function( event, ui ) {
+        $( "#amount" ).val( "$" + ui.value );
+        $(this).find('.ui-slider-handle').text(ui.value);
+      }
+
+    });
+    $( "#mile" ).val( $( "#slider-range-mile" ).slider( "value" ) );
+  } );
+
+  </script>
+
+  <style type="text/css">
+  	.ui-slider .ui-slider-handle {width:2em;text-decoration:none;text-align:center;}
+  	.ui-widget-header{
+  		background-color: #f6a828;
+  	}
+  	.ui-widget-content .ui-state-default{
+  		width: 20px; 
+  		height: 17px; 
+  		background: #f6a828; 
+  		border-radius: 50px;}
+  </style>

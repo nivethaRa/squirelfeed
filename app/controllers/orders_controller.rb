@@ -1,16 +1,13 @@
 class OrdersController < ApplicationController
 
   #This is for Shoppe
+  before_filter :authenticate_user!, only: [:checkout]
 
 	def destroy
-  		current_order.destroy
-  		session[:order_id] = nil
-  		redirect_to root_path, :notice => "Basket emptied successfully."
-  	end
-
-  	def checkout
-  		@order = Shoppe::Order.find(current_order.id)
-	end
+  	current_order.destroy
+  	session[:order_id] = nil
+  	redirect_to basket_path, :notice => "Basket emptied successfully."
+  end
 
 	def checkout
   	@order = Shoppe::Order.find(current_order.id)
@@ -20,7 +17,7 @@ class OrdersController < ApplicationController
     	end
   	end
 	end
-
+  
   def payment
     if request.post?
       redirect_to checkout_confirmation_path

@@ -4,12 +4,12 @@ class ProductsController < ApplicationController
 
   def index
     if params[:amount]
-      @products = Shoppe::Product.root.where("price < #{params[:amount].to_s.tr('$', '').to_f}")
+      @products = Shoppe::Product.root.where("price < #{params[:amount].to_s.tr('$', '').to_f}").paginate(:page => params[:page], :per_page => 3)
       # .ordered.includes(:product_categories, :variants)
       #@products = @products.group_by(&:product_category)
     else
       # @products = Shoppe::Product.root.ordered.includes(:product_categories, :variants)
-      @products = Shoppe::Product.root
+      @products = Shoppe::Product.root.paginate(:page => params[:page], :per_page => 3)
       # .where("price > 60")
       # abort @products.inspect
       # @products = @products.group_by(&:product_category)

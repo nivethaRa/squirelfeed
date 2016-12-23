@@ -1,17 +1,67 @@
-<h2><%= @product.name %></h2>
+<!-- <h2><%= @product.name %></h2>
 
-<% if @product.default_image %>
-  <%= image_tag @product.default_image.path, :width => '200px', :style => "float:right" %>
-<% end %>
+<%# if @product.default_image %>
+  <%#= image_tag @product.default_image.path, :width => '200px', :style => "float:right" %>
+<%# end %>
 
 <p><%= @product.short_description %></p>
 <p>
   <b><%= number_to_currency @product.price %></b>
-  <%= link_to "Add to basket", product_path(@product.permalink), :method => :post %>
+  <%#= link_to "Add to basket", product_path(@product.permalink), :method => :post %>
 </p>
 
 <hr>
 <%= simple_format @product.description %>
 <hr>
 
-<p><%= link_to "Back to list", root_path %></p>
+<p><%#= link_to "Back to list", root_path %></p> -->
+
+
+<div class="container">
+	<div class=col-sm-12>
+	 	<div class="raw">
+	      <ul>
+		      <div class="col-sm-6">
+		        <% if @product.default_image %>
+						<%= image_tag @product.default_image.path, :width => '100%', :style => "float:left"%>
+				<% end %>
+		      </div>
+		      <div class="col-sm-6">
+		      	<h2><%= @product.name %></h2>
+		      	<p><%= number_to_currency @product.price %></p>
+		        <p><%= @product.description %></p>
+		        <div class="col-sm-6 cart"><%= link_to "Add to cart", product_path(@product.permalink), :method => :post, class: "cart-button" %></div>
+		        <div class="col-sm-6 cart"><%= link_to "Back to list", products_path, class: "cart-button" %></div>
+		      </div>
+	      </ul>
+	    </div>
+	</div>
+</div>
+
+
+<style type="text/css">
+.cart{
+	padding-top: 10px;
+}
+.cart a:focus, a:hover{
+	text-decoration: none !important; 
+	color: #333333;
+}
+.cart-button {
+  background: transparent !important;
+  border: 1px solid #333333;
+  padding: 15px 30px;
+  font-size: 14px;
+  -moz-border-radius: 0;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+  color: #333333;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+</style>>

@@ -1,14 +1,32 @@
-<h2>Products</h2>
+<!-- <h2>Products</h2>
 
-<% @products.each do |category, products| %>
-  <h3><%= category.name %></h3>
+<%# @products.each do |category, products| %>
+  <h3><%#= category.name %></h3>
   <ul>
-    <% products.each do |product| %>
+    <%# products.each do |product| %>
     <li>
-      <h4><%= link_to product.name, product_path(product.permalink) %></h4>
-      <p><%= product.short_description %></p>
-      <p><b>Price:</b> <%= number_to_currency product.price %></p>
+      <h4><%#= link_to product.name, product_path(product.permalink) %></h4>
+      <p><%#= product.short_description %></p>
+      <p><b>Price:</b> <%#= number_to_currency product.price %></p>
     </li>
-    <% end %>
+    <%# end %>
   </ul>
-<% end %>
+<%# end %> -->
+
+<div class="container">
+  <div class="col-sm-12" style="width: 924px">
+    <div class="raw" style="padding-left: 20px padding-right: 20px";>
+      <div class="col-sm-3">
+        <%= render '/products/sidebar' %>
+      </div>
+      <div class="col-sm-9">
+        <%= render '/products/product_listing' %>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="col-sm-12" style="text-align: center;">
+    <%= will_paginate @products %>
+  </div>
+</div>

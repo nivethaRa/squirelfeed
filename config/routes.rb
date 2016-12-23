@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   #Index page/root URL: home
   root 'pages#home'
+  #root to: "products#index"
 
   #Define routes for pages
   get '/about' => 'pages#about'
@@ -21,6 +22,7 @@ Rails.application.routes.draw do
   resources :charges
 
   #shoppe routes
+  get '/products' => 'products#index'
   get "product/:permalink", to: "products#show", as: "product"
   post "product/:permalink", to: "products#buy", as: "buy"
   post "product/:permalink", to: "products#buy"

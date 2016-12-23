@@ -1,0 +1,21 @@
+<%# @products.each do |category, products| %>
+  <div class=col-sm-12>
+    <div class="raw">
+      <h3><%#= category.name %></h3>
+      <ul>
+        <% @products.each do |product| %>
+        <!-- <li> -->
+          <h4><%= link_to product.name, product_path(product.permalink) %></h4>
+          <div class="col-sm-3">
+            <%= image_tag product.default_image.path, :width => "120px", :style => "style:style" %> 
+          </div>
+          <div class="col-sm-9">
+            <p><%= product.description %></p>
+            <!-- <p><b>Price:</b> <%= number_to_currency product.price %></p> -->
+          </div>
+        <!-- </li> -->
+        <% end %>
+      </ul>
+    </div>
+  </div>
+<%# end %>

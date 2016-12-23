@@ -6,26 +6,44 @@
 
     <title><%= content_for?(:title) ? yield(:title) : "Untitled" %></title>
 
-    <%= stylesheet_link_tag    "application" %>
+    <%= stylesheet_link_tag    "application", media: "all" %>
     <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <%= csrf_meta_tags %>
   </head>
 
   <body>
-    <% if current_order %>
-    <p style="border:1px solid black;padding:10px;">
-      You have <%= pluralize current_order.total_items, 'item'%> in your basket which cost
-      <%= number_to_currency current_order.total_before_tax %>.
-    </p>
-    <% end %>
-    <%= link_to "View basket", basket_path %>
-    <%= flash[:notice] %>
-    <%= link_to "Checkout", checkout_path %>
+    <div class="container">
+      <% if current_order %>
+      <p style="border:1px solid black;padding:10px;">
+        You have <%= pluralize current_order.total_items, 'item'%> in your basket which cost
+        <%= number_to_currency current_order.total_before_tax %>.
+      </p>
+      <% end %>
+      <%= link_to "View basket", basket_path %>
+      <%= flash[:notice] %>
+      <%= link_to "Checkout", checkout_path %>
+    </div>
 
     <!--navbar render code -->
     <%= render '/layouts/nav' %>
         <span class="notice"><%= notice %></span>
         <span class="alert"><%= alert %></span>
+
+    <!-- <div class="container"> -->
+      <% if current_order %>
+      <p style="border:1px solid black;padding:10px;">
+        You have <%= pluralize current_order.total_items, 'item'%> in your basket which cost
+        <%= number_to_currency current_order.total_before_tax %>.
+      </p>
+      <% end %>
+      <%= link_to "View basket", basket_path %>
+      <%= flash[:notice] %>
+      <%= link_to "Checkout", checkout_path %>
+    <!-- </div> -->
         <%= yield %>
   </body>
 </html>

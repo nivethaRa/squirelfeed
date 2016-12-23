@@ -6,6 +6,8 @@ Navigation Style
     background-color: #000000;
     color:#222;
     border: 1px solid #fff;
+    top: 0;
+    z-index: 1;
  }
 .navbar-default {
   margin-bottom: 0;
@@ -52,7 +54,7 @@ Navigation Style
 }
 </style>
 
-<nav class="navbar navbar-default navbar-fixed-top">
+<nav class="navbar navbar-default navbar-fixed-top myNavbar">
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
@@ -66,6 +68,7 @@ Navigation Style
     <div class="collapse navbar-collapse" id="navbar">
         <ul class="nav navbar-nav">
           <li><a href="/home">Home</a></li>
+          <li><a href="/products">Products</a></li>
         </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="/basket"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
